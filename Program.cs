@@ -28,7 +28,7 @@ namespace MeretFelugyelo
             logger.ConvertFile();
             SaveToSmb("import_result.xlsx", "FGergo\\");
             SaveToSmb("import_result_kimutatas.xlsx", "FGergo\\");
-            /*FileAnalyzer fileAnalyzer = new FileAnalyzer();
+            FileAnalyzer fileAnalyzer = new FileAnalyzer();
             fileAnalyzer.CompareFileData();
             //SaveToSmb("Rapid ár és cikkszám módosulás.xlsx", "FGergo\\");
 
@@ -78,7 +78,7 @@ namespace MeretFelugyelo
             SaveToSmb("Gerison Check.xlsx", "FGergo\\Gerison Saves\\");
 
             Console.WriteLine("Save complete!");
-            Console.ReadLine();*/
+            Console.ReadLine();
         }
 
         private static void SaveToSmb(string saveFile, string saveFolder)
