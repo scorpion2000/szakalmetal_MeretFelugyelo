@@ -76,10 +76,10 @@ namespace MeretFelugyelo.LogConverter
 
             if (reportCol - 1 != 2 && ws.Cell(insertRow, reportCol - 1).Value.ToString() != reader[1].ToString())
                 ws.Range(ws.Cell(insertRow, reportCol - 1), ws.Cell(insertRow, reportCol)).Style.Fill.BackgroundColor = XLColor.Amber;
-
-            if (DateTime.Parse(reader[3].ToString()).Date == DateTime.Today.Date && reader[1].ToString() != "NULL" && ws.Cell(insertRow, reportCol - 1).Value.ToString() != "NULL")
-                if (ws.Cell(insertRow, reportCol - 1).Value.ToString() != reader[1].ToString())
-                    ws.Cell(insertRow, 2).Value = -(int.Parse(ws.Cell(insertRow, reportCol - 1).Value.ToString()) - int.Parse(reader[1].ToString()));
+            if (reader[1].ToString() != "" && ws.Cell(insertRow, reportCol - 1).Value.ToString() != "")
+                if (DateTime.Parse(reader[3].ToString()).Date == DateTime.Today.Date && reader[1].ToString() != "NULL" && ws.Cell(insertRow, reportCol - 1).Value.ToString() != "NULL")
+                    if (ws.Cell(insertRow, reportCol - 1).Value.ToString() != reader[1].ToString())
+                        ws.Cell(insertRow, 2).Value = -(int.Parse(ws.Cell(insertRow, reportCol - 1).Value.ToString()) - int.Parse(reader[1].ToString()));
 
             return row;
         }
@@ -100,9 +100,10 @@ namespace MeretFelugyelo.LogConverter
             if (reportCol - 1 != 2 && ws.Cell(insertRow, reportCol - 1).Value.ToString() != reader[2].ToString())
                 ws.Range(ws.Cell(insertRow, reportCol - 1), ws.Cell(insertRow, reportCol)).Style.Fill.BackgroundColor = XLColor.Amber;
 
-            if (DateTime.Parse(reader[3].ToString()).Date == DateTime.Today.Date && reader[2].ToString() != "NULL" && ws.Cell(insertRow, reportCol - 1).Value.ToString() != "NULL")
-                if (ws.Cell(insertRow, reportCol - 1).Value.ToString() != reader[2].ToString())
-                    ws.Cell(insertRow, 2).Value = -(int.Parse(ws.Cell(insertRow, reportCol - 1).Value.ToString()) - int.Parse(reader[2].ToString()));
+            if (reader[2].ToString() != "" && ws.Cell(insertRow, reportCol - 1).Value.ToString() != "")
+                if (DateTime.Parse(reader[3].ToString()).Date == DateTime.Today.Date && reader[2].ToString() != "NULL" && ws.Cell(insertRow, reportCol - 1).Value.ToString() != "NULL")
+                    if (ws.Cell(insertRow, reportCol - 1).Value.ToString() != reader[2].ToString())
+                        ws.Cell(insertRow, 2).Value = -(int.Parse(ws.Cell(insertRow, reportCol - 1).Value.ToString()) - int.Parse(reader[2].ToString()));
 
             return row;
         }
@@ -156,7 +157,7 @@ namespace MeretFelugyelo.LogConverter
                 Console.WriteLine(ex);
             }
 
-            try { wb.SaveAs("import_result_kimutatas.xlsx"); }
+            try { wb.SaveAs(AppDomain.CurrentDomain.BaseDirectory + "import_result_kimutatas.xlsx"); }
             catch (Exception e) { Console.WriteLine(e); }
         }
 
@@ -325,7 +326,7 @@ namespace MeretFelugyelo.LogConverter
             }
             ws.Cell(1, 1).Value = "supplier";
             ws.Cell(1, 2).Value = "count";
-            try { wb.SaveAs("import_result.xlsx"); }
+            try { wb.SaveAs(AppDomain.CurrentDomain.BaseDirectory + "import_result.xlsx"); }
             catch (Exception e) { Console.WriteLine(e); }
         }
 

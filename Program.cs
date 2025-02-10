@@ -16,7 +16,7 @@ namespace MeretFelugyelo
     internal class Program
     {
         static string filePath = "\\\\Fs\\ARLISTA\\gerison_arlista\\";
-        static string appPath = "C:\\Users\\LP-KATALOGUS1\\Desktop\\VS Munka\\MeretFelugyelo\\bin\\Debug\\";
+        static string appPath = AppDomain.CurrentDomain.BaseDirectory;
         static string savePath = appPath;
         static DateTime compareTime = new DateTime(2024, 10, 1, 17, 00, 0);
         static DateTime compareTimeTo = new DateTime(2024, 10, 1, 19, 45, 0);
@@ -26,8 +26,8 @@ namespace MeretFelugyelo
         {
             SqlLogConverter logger = new SqlLogConverter();
             logger.ConvertFile();
-            SaveToSmb("import_result.xlsx", "FGergo\\");
-            SaveToSmb("import_result_kimutatas.xlsx", "FGergo\\");
+            SaveToSmb(appPath + "import_result.xlsx", "FGergo\\");
+            SaveToSmb(appPath + "import_result_kimutatas.xlsx", "FGergo\\");
             FileAnalyzer fileAnalyzer = new FileAnalyzer();
             fileAnalyzer.CompareFileData();
             //SaveToSmb("Rapid ár és cikkszám módosulás.xlsx", "FGergo\\");

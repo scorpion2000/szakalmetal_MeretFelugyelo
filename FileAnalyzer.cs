@@ -15,7 +15,7 @@ namespace MeretFelugyelo.Analyzer
     {
         public List<string> importantFiles = new List<string>();
         public string filePath = "\\\\Fs\\ARLISTA\\gerison_arlista\\";
-        static string appPath = "C:\\Users\\LP-KATALOGUS1\\Desktop\\VS Munka\\MeretFelugyelo\\bin\\Debug\\";
+        static string appPath = AppDomain.CurrentDomain.BaseDirectory;
         public Dictionary<string, FileParseData> parseData = new Dictionary<string, FileParseData>();
         public Dictionary<string, List<FileData>> fileData = new Dictionary<string, List<FileData>>();
         string[] titles = new string[] { "Kódnév", "Ár" };
@@ -100,7 +100,7 @@ namespace MeretFelugyelo.Analyzer
                 ws.Column(titles.Length + 1).SetAutoFilter();
             }
 
-            try { wb.SaveAs("Rapid ár és cikkszám módosulás.xlsx"); }
+            try { wb.SaveAs(appPath + "Rapid ár és cikkszám módosulás.xlsx"); }
             catch (Exception e) { Console.WriteLine(e); }
             CreateSaveFiles();
         }
